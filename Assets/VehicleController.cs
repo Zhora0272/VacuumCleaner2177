@@ -31,11 +31,13 @@ public class VehicleController : MonoBehaviour
 
         if (_keyA)
         {
-            _rb.AddTorque(-Vector3.up, ForceMode.Acceleration);
+            _rb.AddRelativeForce(Vector3.left * _forcePower, ForceMode.Acceleration);
+            _rb.AddTorque(-Vector3.up * 2, ForceMode.Acceleration);
         }
         if (_keyD)
         {
-            _rb.AddTorque(Vector3.up, ForceMode.Acceleration);
+            _rb.AddRelativeForce(Vector3.right * _forcePower, ForceMode.Acceleration);
+            _rb.AddTorque(Vector3.up * 2, ForceMode.Acceleration);
         }
     }
 }

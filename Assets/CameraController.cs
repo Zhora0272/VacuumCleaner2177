@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,12 +17,12 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(_target.position + _target.forward);
+        transform.LookAt((_target.position + _target.forward) + _lookOffset);
     }
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, (-_target.forward * 2) + _offset, Time.fixedDeltaTime * _smooth);
+        transform.position = Vector3.Lerp(transform.position, _target.position - _target.forward * 3, Time.fixedDeltaTime * _smooth) + _offset;
     }
 
     IEnumerator TargetPathTracking()
